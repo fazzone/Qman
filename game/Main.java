@@ -29,7 +29,8 @@ public class Main {
 		new Thread(new Server(1337)).start();
 		
 		Scanner in = new Scanner(System.in);
-		while (in.hasNextLine()) {
+		do {
+			System.out.print("> ");
 			String args[] = in.nextLine().split(" "), cmd = args[0];
 			switch (cmd) {
 			case "quit":
@@ -65,6 +66,6 @@ public class Main {
 				GameRuntime.rebase();
 				break;
 			}
-		}
+		} while (in.hasNextLine());
 	}
 }

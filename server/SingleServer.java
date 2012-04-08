@@ -25,7 +25,7 @@ public class SingleServer implements Runnable {
 			handleRequest(k=s.nextLine());
 			sock.close();
 		} catch (NoSuchElementException e) {
-			System.out.println(e.getMessage()+" (are we getting spammed with requests?) "+k);
+			//System.out.println(e.getMessage()+" (are we getting spammed with requests?) "+k);
 		} catch (IOException e) {
 			//run around with out hair on fire
 			throw new Error(e);
