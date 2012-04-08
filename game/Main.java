@@ -6,7 +6,9 @@ import handlers.GameHandler;
 import handlers.ShowHandler;
 import handlers.VictoryHandler;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -69,6 +71,31 @@ public class Main {
 			case "query-all-users":
 				for (String u : GameRuntime.users.keySet())
 					System.out.println(u);
+				break;
+			//TODO: move this into a different file in the 'serial' package, with all the rest of the persistence nonsense
+			case "write-album-defs":
+				if (args.length > 1) {
+					try {
+						String filename = "data/"+args[1];
+						BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+						for (int i=0; i<Album.getTotalAlbums(); i++) {
+							Album a = Album.getAlbumByID(i);
+							writer.write(Integer.toString(i));
+							writer.newLine();
+							writer.write(a.getTitle());
+							writer.newLine();
+							writer.write(a.getArtist());
+							writer.newLine();
+							writer.write(a.getImageURL());
+							writer.newLine();
+						}					
+						writer.close();
+						System.out.println("OK; wrote album defs to "+filename);
+					} catch (Exception e) {
+						System.out.println("exception in write-album-defs: "+e);
+						e.printStackTrace();
+					}
+				}
 				break;
 			case "rebase":
 				GameRuntime.rebase();
