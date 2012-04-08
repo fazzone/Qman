@@ -33,7 +33,7 @@ public class Main {
 				try {
 					while (true) {
 						Thread.sleep(60 * 1000);
-						Persist.writeAppState(new File("data/backup "+System.currentTimeMillis()));
+						Persist.writeAppState(new File("data/backups/"+System.currentTimeMillis()));
 					}
 				} catch (Exception e) {
 					throw new Error(e);
