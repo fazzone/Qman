@@ -23,6 +23,10 @@ public class NoncePool<E> {
 		ncs.remove(nonce);
 	}
 	public synchronized void cleanup() {
+		//This might come back later.  I don't think it's really a problem so far as memory
+		//usage or whatever, and I don't think this actually works, so I'll just leave it
+		//out for now and see how it goes
+		/*
 		long begin = System.currentTimeMillis();
 		ArrayList<Long> toRemove = new ArrayList<Long>();
 		for (long l : ncs.keySet())
@@ -30,6 +34,7 @@ public class NoncePool<E> {
 				toRemove.add(l);
 		for (long l : toRemove)
 			ncs.remove(l);
+		*/
 	}
 	private long createNonce() {
 		long l;
