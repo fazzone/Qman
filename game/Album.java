@@ -36,10 +36,8 @@ public class Album {
 
 	public static Album getAlbum(String title, String artist, String imageURL) {
 		Album proto = aNameMap.get(title+" by "+artist);
-		if (proto != null) {
-			System.out.println("we already have "+proto+"\t\t("+proto.serial+")");
+		if (proto != null)
 			return proto;
-		}
 
 		synchronized (albumConstructionLock) {
 			Album a = new Album(nextSerial++, AlbumActual.create(title, artist, imageURL));

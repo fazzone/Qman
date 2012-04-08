@@ -56,7 +56,11 @@ public class Main {
 					try {
 						int idA = Integer.parseInt(args[1]), idB = Integer.parseInt(args[2]);
 						System.out.println("merging <#"+idB+" - "+Album.getAlbumByID(idB)+"> into <#"+idA+" - "+Album.getAlbumByID(idA)+">");
-						GameRuntime.merge(idA, idB);
+						System.out.println("Are you absolutely, positively, sure? (type \"yes\" if you are)");
+						if (in.nextLine().equals("yes")) {
+							GameRuntime.merge(idA, idB);
+							System.out.println("OK, merged");
+						} else System.out.println("OK, merge aborted");
 					} catch (NumberFormatException ex) {
 						System.out.println("unable to parse both "+args[1]+" and "+args[2]+" as numbers");
 					}
