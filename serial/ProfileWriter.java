@@ -15,9 +15,9 @@ public class ProfileWriter {
 	public void write(User u) {
 		out.println(u.scoreboard.allAlbums.size());
 		for (Album e : u.scoreboard.allAlbums)
-			out.println(e.title+"\n"+e.artist+"\n"+e.imageURL+"\n"+u.scoreboard.getRating(e));
+			out.println(e.getTitle()+"\n"+e.getArtist()+"\n"+e.getImageURL()+"\n"+u.scoreboard.getRating(e));
 		for (Album e : u.banned)
-			out.println(e.title+"\n"+e.artist+"\n"+e.imageURL+"\n"+u.scoreboard.getRating(e));
+			out.println(e.getTitle()+"\n"+e.getArtist()+"\n"+e.getImageURL()+"\n"+u.scoreboard.getRating(e));
 		out.close();
 	}
 }

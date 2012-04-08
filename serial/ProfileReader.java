@@ -27,8 +27,8 @@ public class ProfileReader {
 			String title = reader.readLine(), artist = reader.readLine(), imgurl = reader.readLine();
 			int rating = Integer.parseInt(reader.readLine());
 			if (i < N)
-				rtg.put(new Album(title, artist, imgurl), rating);
-			else banned.add(new Album(title, artist, imgurl));
+				rtg.put(Album.getAlbum(title, artist, imgurl), rating);
+			else banned.add(Album.getAlbum(title, artist, imgurl));
 		}
 		scb.allAlbums = new ArrayList<Album>(rtg.keySet());
 		scb.ratings = rtg;

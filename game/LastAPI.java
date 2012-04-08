@@ -33,7 +33,7 @@ public class LastAPI {
 			}
 			else if (line.contains("<image size=\"extralarge\"")) {
 				String imgURL = insideTag(line, line.indexOf('.'));	//the filename has a '.' in it
-				found.add(new Album(HTML.unescape(title), HTML.unescape(artist), imgURL));
+				found.add(Album.getAlbum(HTML.unescape(title), HTML.unescape(artist), imgURL));
 				title=artist=null;
 			}
 		return found;

@@ -32,12 +32,12 @@ public class UserHandler implements PageHandler {
 		
 		long matchNonce = GameRuntime.outstandingMatches.bind(match);
 		
-		params.put("title1", match.first.title);
-		params.put("title2", match.second.title);
-		params.put("artist1", match.first.artist);
-		params.put("artist2", match.second.artist);
-		params.put("imglink1", ""+match.first.imageURL);
-		params.put("imglink2", ""+match.second.imageURL);
+		params.put("title1", match.first.getTitle());
+		params.put("title2", match.second.getTitle());
+		params.put("artist1", match.first.getArtist());
+		params.put("artist2", match.second.getArtist());
+		params.put("imglink1", ""+match.first.getImageURL());
+		params.put("imglink2", ""+match.second.getImageURL());
 		params.put("victorylink1", "/victory/"+matchNonce+"f");
 		params.put("victorylink2", "/victory/"+matchNonce+"s");
 		params.put("banlink1", BanHandler.createBanLink(user, match.first));

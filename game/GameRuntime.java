@@ -1,14 +1,20 @@
 package game;
 
 import java.util.HashMap;
+import java.util.ArrayList;
 
 import util.NoncePool;
+import util.Pair;
+import serial.DecisionLog;
 
 public class GameRuntime {
 	public static NoncePool<Match> outstandingMatches = new NoncePool<Match>();
 	public static HashMap<String, User> users = new HashMap<String, User>();
 	public static Scoreboard globalRankings = new Scoreboard();
 	public static HashMap<Album, Integer> listeners = new HashMap<Album, Integer>();
+
+	
+	public static DecisionLog dLog = new DecisionLog("data/decisionlog");
 	private static final int ALBUMS_TO_LOAD = 328;
 	
 	public static void decideMatch(Match m, Album winner) {	//this needs to live here so global scores work
@@ -17,10 +23,44 @@ public class GameRuntime {
 				int oldR = globalRankings.getRating(winner);
 				m.decide(winner, m.owner.scoreboard);
 				m.decide(winner, globalRankings);
-				System.out.println(winner+": "+oldR+" -> "+globalRankings.getRating(winner));
+				dLog.writeDecision(m, winner);
 			}
 		}
 	}
+	
+	public static void merge(int idA, int idB) {
+		//warning: likely slow
+		for (String u : users.keySet()) {
+			Scoreboard sb = users.get(u).scoreboard;
+			synchronized (sb) {
+				sb.allAlbums.remove(Album.getAlbumByID(idB));
+				sb.ratings.remove(Album.getAlbumByID(idB));
+			}
+		}
+		synchronized (globalRankings) {
+			globalRankings.allAlbums.remove(Album.getAlbumByID(idB));
+			globalRankings.ratings.remove(Album.getAlbumByID(idB));
+		}
+		Album.merge(idA, idB);
+	}
+
+	public static void rebase() {
+		System.out.println("GameRuntime.rebase() {");
+		
+		//no matches can be decided while we do this
+		synchronized (globalRankings) {
+			System.out.print("\tResetting all scoreboards...");
+			globalRankings.reset();
+			for (String u : users.keySet())
+				users.get(u).scoreboard.reset();
+			ArrayList<Pair<Match, Album>> ds = dLog.readback();
+			System.out.println("\tsuccessfully read back");
+			for (Pair<Match, Album> p : ds)
+				decideMatch(p.first, p.second);
+			System.out.println("}");
+		}
+	}
+
 	public static void addUser(String name) {
 		try {
 			addUser(name, new Scoreboard(LastAPI.topAlbums(name, ALBUMS_TO_LOAD)));

@@ -15,18 +15,22 @@ public class Scoreboard {
 	public Scoreboard(List<Album> as) {
 		addAlbums(as);
 	}
-	public void updateRatings(Album winner, Album loser) {
+	public synchronized void updateRatings(Album winner, Album loser) {
 		double wexpected = 1/(1+Math.pow(10, (getRating(loser) - getRating(winner))/400));
 		double lexpected = 1/(1+Math.pow(10, (getRating(winner) - getRating(loser))/400));
 		ratings.put(winner, (int)(getRating(winner) + K*(1-wexpected)));
 		ratings.put(loser,  (int)(getRating(loser)  - K*(1-lexpected)));
 	}
-	public void updateRatings(Pair<Album, Album> match, boolean firstWon) {
+	public synchronized void updateRatings(Pair<Album, Album> match, boolean firstWon) {
 		if (firstWon)
 			updateRatings(match.first, match.second);
 		else updateRatings(match.second, match.first);
 	}
-	public void addAlbums(List<Album> as) {
+	public synchronized void reset() {
+		for (Album e : ratings.keySet())
+			ratings.put(e, DEFAULT_RATING);
+	}
+	public synchronized void addAlbums(List<Album> as) {
 		for (Album a : as)
 			if (!ratings.containsKey(a)) {
 				ratings.put(a, DEFAULT_RATING);
@@ -46,7 +50,7 @@ public class Scoreboard {
 			match = pick2();
 		return match;
 	}
-	public int getRating(Album a) {
+	public synchronized int getRating(Album a) {
 		return ratings.get(a);
 	}
 }
