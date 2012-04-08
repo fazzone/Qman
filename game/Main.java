@@ -66,6 +66,10 @@ public class Main {
 					}
 				} else System.out.println("merge-into :: AlbumID -> AlbumID -> IO ()");
 				break;
+			case "query-all-users":
+				for (String u : GameRuntime.users.keySet())
+					System.out.println(u);
+				break;
 			case "rebase":
 				GameRuntime.rebase();
 				break;
