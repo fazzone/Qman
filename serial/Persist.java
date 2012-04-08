@@ -11,7 +11,7 @@ public class Persist {
 	public static void writeAppState(File saveDir) throws IOException {
 		System.out.println("\n\nWriting state...............");
 		if (!saveDir.exists())
-			saveDir.mkdir();
+			saveDir.mkdirs();
 		new ProfileWriter(new File(saveDir, "global")).write(new User("global", GameRuntime.globalRankings));
 		for (String un : GameRuntime.users.keySet()) {
 			File f = new File(saveDir, un);

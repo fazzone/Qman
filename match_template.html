@@ -35,7 +35,7 @@
 		<script type="text/javascript">
 			function oneWon() {
 					xmlhttp=new XMLHttpRequest();
-					xmlhttp.open("GET","victorylink1",false);
+					xmlhttp.open("POST","victorylink1",false);
 					try {
 						xmlhttp.send();
 					} catch(e) {}
@@ -43,7 +43,7 @@
 			}
 			function twoWon() {
 					xmlhttp=new XMLHttpRequest();
-					xmlhttp.open("GET","victorylink2",false);
+					xmlhttp.open("POST","victorylink2",false);
 					try {
 						xmlhttp.send();
 					} catch (e) {}
@@ -51,7 +51,7 @@
 			}
 			function banOne() {
 					xmlhttp=new XMLHttpRequest();
-					xmlhttp.open("GET","banlink1",false);
+					xmlhttp.open("POST","banlink1",false);
 					try {
 						xmlhttp.send();
 					} catch (e) {}
@@ -59,7 +59,7 @@
 			}
 			function banTwo() {
 					xmlhttp=new XMLHttpRequest();
-					xmlhttp.open("GET","banlink2",false);
+					xmlhttp.open("POST","banlink2",false);
 					try {
 						xmlhttp.send();
 					} catch (e) {}

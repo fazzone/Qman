@@ -21,11 +21,11 @@ public class Main {
 		} catch (IOException e) {
 			System.out.println(e.getMessage()+" while reading state, ignoring");
 		}
-		DynamicGuts.addHandler("front", new FileHandler("front_template.html"));
-		DynamicGuts.addHandler("showpage", new GameHandler());
-		DynamicGuts.addHandler("victory", new VictoryHandler());
-		DynamicGuts.addHandler("ban", new BanHandler());
-		DynamicGuts.addHandler("show", new ShowHandler());
+		DynamicGuts.addHandler("GET", "front", new FileHandler("front_template.html"));
+		DynamicGuts.addHandler("GET", "showpage", new GameHandler());
+		DynamicGuts.addHandler("POST", "victory", new VictoryHandler());
+		DynamicGuts.addHandler("POST", "ban", new BanHandler());
+		DynamicGuts.addHandler("GET", "show", new ShowHandler());
 		new Thread(new Server(1337)).start();
 		
 		new Thread(new Runnable() {
@@ -33,7 +33,7 @@ public class Main {
 				try {
 					while (true) {
 						Thread.sleep(60 * 1000);
-						Persist.writeAppState(new File("backup "+System.currentTimeMillis()));
+						Persist.writeAppState(new File("data/backup "+System.currentTimeMillis()));
 					}
 				} catch (Exception e) {
 					throw new Error(e);

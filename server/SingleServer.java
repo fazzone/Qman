@@ -33,7 +33,13 @@ public class SingleServer implements Runnable {
 
 	}
 	private void handleRequest(String line) throws IOException {
-		if (line.startsWith("GET"))
-			DynamicGuts.processGet(line.substring("GET ".length(), line.lastIndexOf(" HTTP/")), out);
+		Scanner sc = new Scanner(line);
+		//get the HTTP method of this request (we handle GET and POST)
+		String httpMethod = sc.next();
+		//the rest of the line contains the path and then the HTTP/x.y version-string
+		String path = sc.nextLine();
+		//remove the aforementioned version-string (and any whitespace)
+		path = path.substring(0, path.lastIndexOf(" HTTP/")).trim();
+		DynamicGuts.processRequest(httpMethod, path, out);
 	}
 }
