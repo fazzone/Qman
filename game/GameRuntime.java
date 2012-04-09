@@ -22,6 +22,8 @@ public class GameRuntime {
 		decideMatch(m, winner, true);
 	}
 	public static void decideMatch(Match m, Album winner, boolean log) {	//this needs to live here so global scores work
+		if (m.owner.username.equals("NMH1998")) //nope
+			return;
 		synchronized (globalRankings) {				//UNTESTED
 			synchronized (m.owner.scoreboard) {		//TODO: does this fix the strange scoreboard bug?
 				int oldR = globalRankings.getRating(winner);
