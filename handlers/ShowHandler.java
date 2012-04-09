@@ -43,7 +43,7 @@ public class ShowHandler implements PageHandler {
 		int max = Math.min(512, e.size());
 		for (int i=0; i<max; i++) {
 			Album a=e.get(i);
-			out.println("<tr><td>"+(i+1)+"</td><td>#"+a.serial+" - "+a+"</td><td>"+scb.getRating(a)+"</td><td>"+GameRuntime.listeners.get(a)+"</td><tr>");
+			out.println("<tr><td>"+(i+1)+"</td><td>"+a+"</td><td>"+scb.getRating(a)+"</td><td>"+GameRuntime.listeners.get(a)+"</td><tr>");
 		}
 		out.println("</table></body></html>");
 	}
