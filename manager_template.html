@@ -15,7 +15,7 @@
 	  font-family: 'Lobster', arial, serif;
 	  font-size: 50px;
 	  padding-left: 10px;
-	  color: #eee;
+	  color: #000000;
 	  margin-bottom: 25px;
 	  padding-top: 25px;
 	  }
@@ -25,19 +25,15 @@
   <body>
 	<center>
 	  <!-- tables, someone come send me back to 1997 -->
-	  <table style="width:900px;">
-		<tr width=600>
-		  <td colspan=2 style="width:600px; background-color: C02942;">
-			<h1>/mu/ album vote</h1>
-		  </td>
-		</tr>
-		<tr>
-		  <table border="2" cellpadding="2">
-			<tr><td>ID</td><td>ban?</td><td>title</td><td>artist</td></tr>
-			%rest-of-table%
-		  </table>
-		</tr>
-	  </table>
-	  <!-- god that was hideous -->
+	  <h1>%user% - preferences</h1>
+	  <form method="GET" action="/manage">
+		<table border="2" cellpadding="2">
+		  <tr><td>ID</td><td>ban?</td><td>title</td><td>artist</td></tr>
+		  %rest-of-table%
+		</table>
+		<input type="submit" value="Update">
+		<input type="hidden" name="action" value="update" />
+		<input type="hidden" name="user" value="%user%">
+	  </form>
   </body>
 </html>

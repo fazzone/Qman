@@ -17,13 +17,18 @@ public class GameRuntime {
 	public static DecisionLog dLog = new DecisionLog("data/decisionlog");
 	private static final int ALBUMS_TO_LOAD = 328;
 	
-	public static void decideMatch(Match m, Album winner) {	//this needs to live here so global scores work
+
+	public static void decideMatch(Match m, Album winner) {
+		decideMatch(m, winner, true);
+	}
+	public static void decideMatch(Match m, Album winner, boolean log) {	//this needs to live here so global scores work
 		synchronized (globalRankings) {				//UNTESTED
 			synchronized (m.owner.scoreboard) {		//TODO: does this fix the strange scoreboard bug?
 				int oldR = globalRankings.getRating(winner);
 				m.decide(winner, m.owner.scoreboard);
 				m.decide(winner, globalRankings);
-				dLog.writeDecision(m, winner);
+				if (log)
+					dLog.writeDecision(m, winner);
 			}
 		}
 	}
@@ -83,6 +88,7 @@ public class GameRuntime {
 	}
 	public static void addUser(User u) {
 		addUser(u.username, u.scoreboard);
+		users.get(u.username).banned = u.banned;
 	}
 	public static void addListener(Album a) {
 		if (!listeners.containsKey(a))

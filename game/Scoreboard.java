@@ -10,7 +10,7 @@ import util.Pair;
 public class Scoreboard {
 	public ArrayList<Album> allAlbums = new ArrayList<Album>();
 	public HashMap<Album, Integer> ratings = new HashMap<Album, Integer>();
-	private static final int K = 32, DEFAULT_RATING = 1400;
+	public static final int K = 32, DEFAULT_RATING = 1400;
 	public Scoreboard() {}
 	public Scoreboard(List<Album> as) {
 		addAlbums(as);

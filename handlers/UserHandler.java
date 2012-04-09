@@ -16,6 +16,9 @@ public class UserHandler implements PageHandler {
 	User user;
 	static PageTemplate mTemplate;
 	static {
+		reloadTemplates();
+	}
+	public static void reloadTemplates() {
 		try {
 			mTemplate = PageTemplate.create(new File("match_template.html"));
 		} catch (IOException e) {

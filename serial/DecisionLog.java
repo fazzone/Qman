@@ -20,7 +20,7 @@ public class DecisionLog {
 	public DecisionLog(String filename) {
 		this.filename = filename;
 		try {
-			writer = new BufferedWriter(new FileWriter(filename));
+			writer = new BufferedWriter(new FileWriter(filename, true));
 		} catch (Exception e) {
 			throw new Error(e);
 		}

@@ -16,6 +16,9 @@ public class URLParameters {
 		/*int paramStartIdx = path.indexOf('?');
 		if (paramStartIdx < 0)
 		return params;*/
+		if (path.isEmpty())
+			return params;
+
 		int paramStartIdx = 0;
 		String paramsBlob = path.substring(paramStartIdx);
 		String[] byName = paramsBlob.split("&");

@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class PageTemplate {
 	//so we don't have to read from disk every single time
-	static HashMap<File, PageTemplate> preloaded = new HashMap<File, PageTemplate>();
+	public static HashMap<File, PageTemplate> preloaded = new HashMap<File, PageTemplate>();
 	StringBuffer blank = new StringBuffer();
 	public static PageTemplate create(File fn) throws IOException {
 		if (preloaded.containsKey(fn))

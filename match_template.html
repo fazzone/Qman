@@ -55,7 +55,7 @@
 					try {
 						xmlhttp.send();
 					} catch (e) {}
-					document.getElementById("banbutton1").value="you won't be seeing this again";
+					window.location.reload();
 			}
 			function banTwo() {
 					xmlhttp=new XMLHttpRequest();
@@ -63,7 +63,7 @@
 					try {
 						xmlhttp.send();
 					} catch (e) {}
-					document.getElementById("banbutton2").value="you won't be seeing this again";
+					window.location.reload();
 			}
 		</script>
 
@@ -117,6 +117,7 @@
 					<td colspan=2>
 						<center style="padding-top: 64px; margin-bottom:-20px;">View <b>your</b> albums sorted by <a href="/show/USER%20r">rating</a> or <a href="/show/USER%20p">popularity</a></center><br>
 						<center>View <b>all</b> albums sorted by <a href="/show/global%20r">rating</a> or <a href="/show/global%20p">popularity</a></center>
+						<center><a href="/manage?user=USER&action=show">view my list of albums / preferences (beta)</a></center>
 						<center style="padding-top: 32px;">Source code on <a href="https://github.com/fazzone/Qman">GitHub</a></center>
 					</td>
 			</table>
