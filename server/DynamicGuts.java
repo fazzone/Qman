@@ -31,8 +31,13 @@ public class DynamicGuts {
 		//remove the leading '/' from the path
 		path = path.substring(1);
 
-		int slashIdx = (path.contains("/")) ? path.indexOf('/') : path.length();
-		String handlerName = path.substring(0, slashIdx);
+		int endIdx = path.indexOf('/');
+		if (endIdx == -1)
+			endIdx = path.indexOf('?');
+		if (endIdx == -1)
+			endIdx = path.length();
+
+		String handlerName = path.substring(0, endIdx);
 
 		if (mHdl.containsKey(handlerName)) {
 			//take off the "handlnername/" part of the path, but if there are no arguments

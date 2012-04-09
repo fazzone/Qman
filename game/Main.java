@@ -5,6 +5,7 @@ import handlers.FileHandler;
 import handlers.GameHandler;
 import handlers.ShowHandler;
 import handlers.VictoryHandler;
+import handlers.ManagerHandler;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -25,6 +26,8 @@ public class Main {
 		DynamicGuts.addHandler("POST", "victory", new VictoryHandler());
 		DynamicGuts.addHandler("POST", "ban", new BanHandler());
 		DynamicGuts.addHandler("GET", "show", new ShowHandler());
+		DynamicGuts.addHandler("GET", "manage", new ManagerHandler());
+		
 		new Thread(new Server(1337)).start();
 		
 		Scanner in = new Scanner(System.in);

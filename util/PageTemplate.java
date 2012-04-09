@@ -27,6 +27,12 @@ public class PageTemplate {
 			output = output.replace(name, bindings.get(name));
 		return output;
 	}
+	public String filledIn(String... bindings) {
+		String output = blank.toString();
+		for (int i=0; i<bindings.length-1; i+=2)
+			output = output.replace(bindings[i], bindings[i+1]);
+		return output;
+	}
 	public String unfilled() {
 		return blank.toString();
 	}
