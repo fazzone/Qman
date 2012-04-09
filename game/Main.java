@@ -7,12 +7,9 @@ import handlers.ShowHandler;
 import handlers.VictoryHandler;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Scanner;
 
-import serial.Persist;
 import server.DynamicGuts;
 import server.Server;
 
@@ -37,6 +34,7 @@ public class Main {
 			switch (cmd) {
 			case "quit":
 				System.exit(0);
+				break;
 			case "query-all-albums":
 				synchronized (Album.albumConstructionLock) {
 					for (int i=0; i<Album.getTotalAlbums(); i++)
