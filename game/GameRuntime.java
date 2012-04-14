@@ -26,7 +26,6 @@ public class GameRuntime {
 			return;
 		synchronized (globalRankings) {				//UNTESTED
 			synchronized (m.owner.scoreboard) {		//TODO: does this fix the strange scoreboard bug?
-				int oldR = globalRankings.getRating(winner);
 				m.decide(winner, m.owner.scoreboard);
 				m.decide(winner, globalRankings);
 				if (log)

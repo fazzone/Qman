@@ -1,6 +1,5 @@
 package util;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -8,7 +7,7 @@ public class NoncePool<E> {
 	//first is the bound object, second is the creation time (used to clean up 'dead' nonces)
 	private HashMap<Long, Pair<E, Long>> ncs = new HashMap<Long, Pair<E, Long>>();
 	private Random r = new Random(System.nanoTime());
-	private static final int DELETION_THRESHOLD = 1;//120*1000;	//2 minutes in milliseconds
+	//private static final int DELETION_THRESHOLD = 1;//120*1000;	//2 minutes in milliseconds
 	public long bind(E e) {
 		long nonce=createNonce();
 		ncs.put(nonce, new Pair<E, Long>(e, System.currentTimeMillis()));

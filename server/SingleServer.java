@@ -20,9 +20,8 @@ public class SingleServer implements Runnable {
 	}
 	public void run() {
 		Scanner s=new Scanner(in);
-		String k="";
 		try {
-			handleRequest(k=s.nextLine());
+			handleRequest(s.nextLine());
 			sock.close();
 		} catch (NoSuchElementException e) {
 			//System.out.println(e.getMessage()+" (are we getting spammed with requests?) "+k);

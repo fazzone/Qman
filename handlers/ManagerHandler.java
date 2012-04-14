@@ -1,18 +1,15 @@
 package handlers;
 
-import java.util.Map;
+import game.Album;
+import game.GameRuntime;
+import game.User;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.net.URLDecoder;
-
-import game.Album;
-import game.GameRuntime;
-import game.Scoreboard;
-import game.User;
+import java.util.Map;
 
 import server.PageHandler;
-
 import util.PageTemplate;
 import util.URLParameters;
 
