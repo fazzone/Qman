@@ -46,6 +46,8 @@ public class Main {
 	}
 	//we have to be passed the scanner in order to do confirmation for merge
 	//maybe that will change in the future?
+	//we're suppressing warnings so we don't get yelled at for using Thread.stop()
+	@SuppressWarnings("deprecation")
 	static void doCommandLine(String line, Scanner in) {
 		String args[] = line.split(" "), cmd = args[0];
 		switch (cmd) {
@@ -53,6 +55,9 @@ public class Main {
 			serverThread.start();
 			break;
 		case "stop":
+			//I am aware of the risks -- we're only stopping the server-thread, which doesn't actually do much except
+			//dispatch to SingleServer, which doesn't do much except dispatch to a handler via DynamicGuts; so we're
+			//(i'm pretty sure) in no danger of causing any corruption anywhere.  Famous last words, etc.
 			serverThread.stop();
 			break;
 		case "quit":
