@@ -8,17 +8,17 @@ public class NoncePool<E> {
 	private HashMap<Long, Pair<E, Long>> ncs = new HashMap<Long, Pair<E, Long>>();
 	private Random r = new Random(System.nanoTime());
 	//private static final int DELETION_THRESHOLD = 1;//120*1000;	//2 minutes in milliseconds
-	public long bind(E e) {
+	public synchronized long bind(E e) {
 		long nonce=createNonce();
 		ncs.put(nonce, new Pair<E, Long>(e, System.currentTimeMillis()));
 		return nonce;
 	}
-	public E get(long nonce) {
+	public synchronized E get(long nonce) {
 		if (ncs.containsKey(nonce))
 			return ncs.get(nonce).first;
 		return null;
 	}
-	public void remove(long nonce) {
+	public synchronized void remove(long nonce) {
 		ncs.remove(nonce);
 	}
 	public synchronized void cleanup() {
@@ -35,7 +35,7 @@ public class NoncePool<E> {
 			ncs.remove(l);
 		*/
 	}
-	private long createNonce() {
+	private synchronized long createNonce() {
 		long l;
 		do
 			l = Math.abs(r.nextLong());
