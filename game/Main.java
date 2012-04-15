@@ -35,12 +35,6 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-//		try {
-//			TestMain.main(null);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
 		Scanner in = new Scanner(System.in);
 		System.out.print("> ");
 		do {

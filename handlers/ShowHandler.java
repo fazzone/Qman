@@ -32,6 +32,8 @@ public class ShowHandler implements PageHandler {
 			writeTable(c, scb, out);
 	}
 	public void writeTable(Comparator<Album> cmp, Scoreboard scb, PrintStream out) throws IOException {
+		long start = System.currentTimeMillis();
+		
 		List<Album> e = scb.allAlbums;
 		synchronized (scb) {
 			Collections.sort(e, cmp);
@@ -45,7 +47,10 @@ public class ShowHandler implements PageHandler {
 			Album a=e.get(i);
 			out.println("<tr><td>"+(i+1)+"</td><td>"+a+"</td><td>"+scb.getRating(a)+"</td><td>"+GameRuntime.listeners.get(a)+"</td><tr>");
 		}
-		out.println("</table></body></html>");
+		out.println("</table>");
+		long elapsed = System.currentTimeMillis() - start;
+		
+		out.println("generated in "+elapsed+"ms</body></html>");
 	}
 	private Scoreboard getScores(String arg) {
 		if (arg.equals("global"))			//last.fm user "GLOBAL" has had 0 plays since 2004, so this hack should be safe.
