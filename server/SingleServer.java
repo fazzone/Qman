@@ -13,7 +13,7 @@ public class SingleServer implements Runnable {
 	private Socket sock;
 	public SingleServer(Socket s) throws IOException {
 		in=(sock=s).getInputStream();
-		out=new PrintStream(sock.getOutputStream());
+		out=new PrintStream(sock.getOutputStream(), false, "UTF-8");
 	}
 	public SingleServer(Socket s, long tim) throws IOException {
 		this(s);

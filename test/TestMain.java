@@ -13,8 +13,5 @@ public class TestMain {
 		Main.registerHandlers();
 		ExecutorService exs = Executors.newCachedThreadPool();
 		exs.execute(new Server(1337));
-		exs.execute(new TestThread("fazzone64"));
-		
-		//exs.shutdown();
 	}
 }

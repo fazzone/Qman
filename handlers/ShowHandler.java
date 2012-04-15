@@ -33,11 +33,11 @@ public class ShowHandler implements PageHandler {
 	}
 	public void writeTable(Comparator<Album> cmp, Scoreboard scb, PrintStream out) throws IOException {
 		List<Album> e = scb.allAlbums;
-		synchronized (e) {
+		synchronized (scb) {
 			Collections.sort(e, cmp);
 		}
 		out.println("<html><head>");
-		out.println("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/></head><body> ");
+		out.println("<meta charset=\"utf-8\"/></head><body> ");
 		out.println("<table border=\"1\">");
 		out.println("<tr><td>rank</td><td>name                        </td><td>rating</td><td>listeners</td></tr>");
 		int max = Math.min(512, e.size());

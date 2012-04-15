@@ -1,20 +1,25 @@
 package game;
 
-import handlers.*;
+import handlers.BanHandler;
+import handlers.FileHandler;
+import handlers.GameHandler;
+import handlers.ManagerHandler;
+import handlers.ShowHandler;
+import handlers.UserHandler;
+import handlers.VictoryHandler;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.File;
 import java.util.Scanner;
-
-import server.DynamicGuts;
-import server.Server;
-
-import util.PageTemplate;
 
 import serial.ProfileReader;
 import serial.ProfileWriter;
+import server.DynamicGuts;
+import server.Server;
+import test.TestThread;
+import util.PageTemplate;
 
 public class Main {
 	//has to be global so we can stop it in doCommandLine()
@@ -29,6 +34,13 @@ public class Main {
 			System.out.println("exception in starting server: "+e);
 			e.printStackTrace();
 		}
+		
+//		try {
+//			TestMain.main(null);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		Scanner in = new Scanner(System.in);
 		System.out.print("> ");
 		do {
@@ -63,6 +75,16 @@ public class Main {
 		case "quit":
 			System.exit(0);
 			break;
+		case "test":
+			if (args.length > 1) {
+				new Thread(new TestThread(args[1])).start();
+				System.out.println("OK, started testing thread for user "+args[1]);
+			} else System.out.println("test :: username -> IO ()");
+			break;
+		case "invoke-gc":
+			System.gc();
+			System.out.println("OK, ran GC");
+		break;
 		case "query-all-albums":
 			synchronized (Album.albumConstructionLock) {
 				for (int i=0; i<Album.getTotalAlbums(); i++)
