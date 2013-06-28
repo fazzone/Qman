@@ -49,6 +49,7 @@ public class Main {
 		DynamicGuts.addHandler("POST", "ban", new BanHandler());
 		DynamicGuts.addHandler("GET", "show", new ShowHandler());
 		DynamicGuts.addHandler("GET", "manage", new ManagerHandler());
+		DynamicGuts.addHandler("GET", "style.css", new FileHandler("style.css"));
 	}
 	//we have to be passed the scanner in order to do confirmation for merge
 	//maybe that will change in the future?

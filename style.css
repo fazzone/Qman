@@ -1,0 +1,40 @@
+
+.navbar .brand {
+	font-family: 'Lobster';
+	font-size: 42px;
+	color: #C02942;
+}
+.top-row, .ban-btn {
+	padding-top: 20px;
+}
+.album-container {
+	text-align: center;
+}
+.ban-btn-row {
+	padding-top: 20px;
+}
+.title-row {
+	font-family: 'Arvo';
+	font-size: 30px;
+}
+.artist-row {
+	font-family: 'Arvo';
+	font-size: 20px;
+	font-style: italic;
+}
+.info-row {
+	padding-top: 100px;
+}
+.time-note {
+	font-family: 'Oswald';
+	font-size: 16px;
+}
+.landing-hero-unit {
+	
+}
+.vs-p {
+	font-style: italic;
+	font-size: 20px;
+	line-height: 310px;
+	height: 310px;
+}

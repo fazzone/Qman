@@ -1,55 +1,50 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>/mu/ album vote</title>
-		<link href='http://fonts.googleapis.com/css?family=Oswald'  rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+  <head>
+	<meta charset='utf-8'>
+	<title>/mu/ album vote</title>
+	<link href='http://fonts.googleapis.com/css?family=Oswald'  rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+	<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+	<link href="/style.css" rel="stylesheet">
+	<script>
+	  function go() {
+	    window.location = "showpage/" + document.getElementById("username").value + "/";
+	    return false;
+	  }
+	</script>
+  </head>
+  <body>
+	<div class="navbar">
+	  <div class="navbar-inner">
+		<a class="brand" href="/front">album-vote</a>
+	</div></div>
 
-		<style>
-			body {
-				font-family: 'Oswald', arial, serif;
-				font-size: 14px;
-				padding-top: 20px;
-			}
+	<div class="hero-unit landing-hero-unit">
+	  <h1>"album-vote"</h1>
+	  <p>Rate your music comparatively.</p>
+	  <p>
+		<form class="form-inline" action="#">
+		  <input id="username" type="text" placeholder="last.fm username">
+		  <button type="button" onclick="go()" class="btn btn-primary">let's do this</button>
+		</form>	  
+		<span class="label label-info time-note">Note</span>
+		<span class="time-note">loading your top albums may take a couple seconds</span>
+	  </p>
+	</div>
 
-			h1 {
-				font-family: 'Lobster', arial, serif;
-				font-size: 50px;
-				padding-left: 10px;
-				color: #eee;
-				margin-bottom: 25px;
-				padding-top: 25px;
-			}
-		</style>
+	<div class="container">
+	  <div class="row">
 
-	</head>
-	<body>
-		<center>
-			<!-- tables, someone come send me back to 1997 -->
-			<table style="width:900px;">
-				<tr width=600>
-					<td colspan=2 style="width:600px; background-color: C02942;">
-						<h1>/mu/ album vote</h1>
-					</td>
-				</tr>
-				<tr>
-					<td width=300 style="width:300px;">
-						
-						<p>Note: loading your top albums may take a couple seconds</p>
-					</td>
-					<td style="width: 300px;">
-						Last.fm username: <input id="username" type="text" name="no" />
-						<button onclick="window.location=&quot;showpage/&quot;+document.getElementById(&quot;username&quot;).value+&quot;/&quot;;">let's do this</button>
-					</td>
-				</tr>
-				<tr>
-					<td colspan=2>
-						<center style="padding-top: 64px;">View albums ordered by <a href="/show/global%20r">rating</a> or by <a href="/show/global%20p">popularity</a>.</center>
-					</td>
-				</tr>
-					<td colspan=2>
-						<center style="padding-top: 32px;">Source code on <a href="https://github.com/fazzone/Qman">GitHub</a></center>
-					</td>
-			</table>
-			<!-- god that was hideous -->
-	</body>
+		<div class="span6">
+		</div>
+
+		<div class="span6">
+		</div>
+		
+	  </div>
+	</div>
+
+
+  </body>
 </html>

@@ -1,126 +1,166 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>/mu/ album vote</title>
-		<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-		<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-		<style>
-			body {
-				font-family: 'Oswald', arial, serif;
-				font-size: 14px;
-				padding-top: 20px;
-			}
+  <head>
+	<meta charset='UTF-8'>
+	<title>/mu/ album vote</title>
+	<link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/style.css" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<script type="text/javascript">
+	  function oneWon() {
+ 	    xmlhttp=new XMLHttpRequest();
+	    xmlhttp.open("POST","victorylink1",false);
+	    try {
+	      xmlhttp.send();
+	    } catch(e) {}
+	      window.location.reload();
+	  }
+	  function twoWon() {
+	    xmlhttp=new XMLHttpRequest();
+	    xmlhttp.open("POST","victorylink2",false);
+	    try {
+	      xmlhttp.send();
+	    } catch (e) {}
+	      window.location.reload();
+	  }
+	  function banOne() {
+	    xmlhttp=new XMLHttpRequest();
+	    xmlhttp.open("POST","banlink1",false);
+	    try {
+	      xmlhttp.send();
+	    } catch (e) {}
+	      window.location.reload();
+	    }
+	  function banTwo() {
+	    xmlhttp=new XMLHttpRequest();
+	    xmlhttp.open("POST","banlink2",false);
+	    try {
+	      xmlhttp.send();
+	    } catch (e) {}
+	      window.location.reload();
+	    }	  
+	</script>
 
-			h1 {
-				font-family: 'Lobster', arial, serif;
-				font-size: 50px;
-				padding-left: 10px;
-				color: #eee;
-				margin-bottom: 25px;
-				padding-top: 25px;
-			}
+  </head>
+  <body>
+	<div class="navbar">
+	  <div class="navbar-inner">
+		<a class="brand" href="/front">album-vote</a>
+	</div></div>
+		  
+	<div class="container album-container">
+	  <div class="row top-row title-row">
+		<div class="span4">
+		  <h3>title1</h3>
+		</div>
+		
+		<div class="span4 offset4">
+		  <h3>title2</h3>
+		</div>
+	  </div>
+	  
+	  <div class="row artist-row">
+		<div class="span4">
+		  <h4>artist1</h4>
+		</div>
 
-			h2 {
-				font-family: 'Arvo', arial, serif;
-				font-size:20px;
-			}
+		<div class="span4 offset4">
+		  <h4>artist2</h4>
+		</div>						 
+	  </div>
+	  
+	  <div class="row">
+		<div class="span4">
+		  <a href="javascript:oneWon()"><img class="img-polaroid" src="imglink1"></a>
+		</div>
 
-			h3 {
-				font-family: 'Arvo', arial, serif;
-				font-size:16px;
-			}
-		</style>
+		<div class="span4 pagination-centered">
+		  <p class="vs-p">vs.</p>
+		</div>
 
-		<script type="text/javascript">
-			function oneWon() {
-					xmlhttp=new XMLHttpRequest();
-					xmlhttp.open("POST","victorylink1",false);
-					try {
-						xmlhttp.send();
-					} catch(e) {}
-					window.location.reload();
-			}
-			function twoWon() {
-					xmlhttp=new XMLHttpRequest();
-					xmlhttp.open("POST","victorylink2",false);
-					try {
-						xmlhttp.send();
-					} catch (e) {}
-					window.location.reload();
-			}
-			function banOne() {
-					xmlhttp=new XMLHttpRequest();
-					xmlhttp.open("POST","banlink1",false);
-					try {
-						xmlhttp.send();
-					} catch (e) {}
-					window.location.reload();
-			}
-			function banTwo() {
-					xmlhttp=new XMLHttpRequest();
-					xmlhttp.open("POST","banlink2",false);
-					try {
-						xmlhttp.send();
-					} catch (e) {}
-					window.location.reload();
-			}
-		</script>
+		<div class="span4">
+		  <a href="javascript:twoWon()"><img class="img-polaroid" src="imglink2"></a>
+		</div>
+	  </div>
 
-	</head>
-	<body>
-		<center>
-			<!-- tables, someone come send me back to 1997 -->
-			<table style="width:900px;">
-				<tr width=600>
-					<td colspan=2 style="width:600px; background-color: C02942;">
-						<h1>/mu/ album vote</h1>
-					</td>
-				</tr>
-				<tr>
-					<td width=300 style="width:300px;">
-						<h2 style="padding-top:20px; margin-bottom:-5px;"><center>title1</center></h2>
-					</td>
-					<td style="width: 300px;">
-						<h2 style="padding-top:20px; margin-bottom:-5px;"><center>title2</center></h2>
-					</td>
-				</tr>
+	  <div class="row ban-btn-row">
+		<div class="span4">
+		  <a class="btn" href="javascript:banOne()">don't show me this again</a>
+		</div>
 
-				<tr>
-					<td width=300 style="width:300px;">
-						<h3><center>artist1</center></h3>
-					</td>
-					<td style="width: 300px;">
-						<h3><center>artist2</center></h3>
-					</td>
-				</tr>
+		<div class="span4 offset4">
+		  <a class="btn" href="javascript:banTwo()">don't show me this again</a>
+		</div>
+	  </div>
+	  
+	  <div class="row info-row">
+		<div class="span12 pagination-centered">
+		   <p>View <b>your</b> albums sorted by <a href="/show/USER%20r">rating</a> or <a href="/show/USER%20p">popularity</a></p>
+		   <p>View <b>all</b> albums sorted by <a href="/show/global%20r">rating</a> or <a href="/show/global%20p">popularity</a></p>
+		   <p><a href="/manage?user=USER&action=show">view my list of albums / preferences (beta)</a></p>
+		   <p>Source code on <a href="https://github.com/fazzone/Qman">GitHub</a></p>
+		</div>
+	  </div>
+	</div>
+				  
 
-				<tr>
-					<td width=300 style="width:300px;">
-						<center><a href="javascript:oneWon()"><img src="imglink1"/></a></center>
-					</td>
-					<td style="width: 300px;">
-						<center><a href="javascript:twoWon()"><img src="imglink2"/></a></center>
-					</td>
-				</tr>
 
-				<tr>
-					<td width=300 style="width:300px;">
-						<center> <button id="banbutton1" onclick="banOne()">Don't show me this again</button></center>
-					</td>
-					<td style="width: 300px;">
-						<center> <button id="banbutton2" onclick="banTwo()">Don't show me this again</button></center>
-					</td>
-				</tr>
+		 
+	<!--		<center>
+				<!-- tables, someone come send me back to 1997 
+					 <table style="width:900px;">
+					   <tr width=600>
+						 <td colspan=2 style="width:600px; background-color: C02942;">
+						   <h1>/mu/ album vote</h1>
+						 </td>
+					   </tr>
+					   <tr>
+						 <td width=300 style="width:300px;">
+						   <h2 style="padding-top:20px; margin-bottom:-5px;"><center>title1</center></h2>
+						 </td>
+						 <td style="width: 300px;">
+						   <h2 style="padding-top:20px; margin-bottom:-5px;"><center>title2</center></h2>
+						 </td>
+					   </tr>
 
-				<tr>
-					<td colspan=2>
-						<center style="padding-top: 64px; margin-bottom:-20px;">View <b>your</b> albums sorted by <a href="/show/USER%20r">rating</a> or <a href="/show/USER%20p">popularity</a></center><br>
-						<center>View <b>all</b> albums sorted by <a href="/show/global%20r">rating</a> or <a href="/show/global%20p">popularity</a></center>
-						<center><a href="/manage?user=USER&action=show">view my list of albums / preferences (beta)</a></center>
-						<center style="padding-top: 32px;">Source code on <a href="https://github.com/fazzone/Qman">GitHub</a></center>
-					</td>
-			</table>
-			<!-- god that was hideous -->
-	</body>
+					   <tr>
+						 <td width=300 style="width:300px;">
+						   <h5><center>artist1</center></h5>
+						 </td>
+						 <td style="width: 300px;">
+						   <h5><center>artist2</center></h5>
+						 </td>
+					   </tr>
+
+					   <tr>
+						 <td width=300 style="width:300px;">
+						   <center><a href="javascript:oneWon()"><img src="imglink1"/></a></center>
+						 </td>
+						 <td style="width: 300px;">
+						   <center><a href="javascript:twoWon()"><img src="imglink2"/></a></center>
+						 </td>
+					   </tr>
+
+					   <tr>
+						 <td width=300 style="width:300px;">
+						   <center> <button id="banbutton1" onclick="banOne()">Don't show me this again</button></center>
+						 </td>
+						 <td style="width: 300px;">
+						   <center> <button id="banbutton2" onclick="banTwo()">Don't show me this again</button></center>
+						 </td>
+					   </tr>
+
+					   <tr>
+						 <td colspan=2>
+						   <center style="padding-top: 64px; margin-bottom:-20px;">View <b>your</b> albums sorted by <a href="/show/USER%20r">rating</a> or <a href="/show/USER%20p">popularity</a></center><br>
+						   <center>View <b>all</b> albums sorted by <a href="/show/global%20r">rating</a> or <a href="/show/global%20p">popularity</a></center>
+						   <center><a href="/manage?user=USER&action=show">view my list of albums / preferences (beta)</a></center>
+						   <center style="padding-top: 32px;">Source code on <a href="https://github.com/fazzone/Qman">GitHub</a></center>
+						 </td>
+					 </table>
+					 <!-- god that was hideous -->
+  </body>
 </html>

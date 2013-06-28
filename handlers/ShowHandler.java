@@ -39,8 +39,10 @@ public class ShowHandler implements PageHandler {
 			Collections.sort(e, cmp);
 		}
 		out.println("<html><head>");
-		out.println("<meta charset=\"utf-8\"/></head><body> ");
-		out.println("<table border=\"1\">");
+		out.println("<meta charset=\"utf-8\"/>");
+		out.println("<link rel=\"stylesheet\" href=\"/css/bootstrap.min.css\">");
+		out.println("</head><body> ");
+		out.println("<table class=\"table\">");
 		out.println("<tr><td>rank</td><td>ID</td><td>name                        </td><td>rating</td><td>listeners</td></tr>");
 		int max = Math.min(512, e.size());
 		for (int i=0; i<max; i++) {
