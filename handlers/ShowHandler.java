@@ -40,14 +40,14 @@ public class ShowHandler implements PageHandler {
 		}
 		out.println("<html><head>");
 		out.println("<meta charset=\"utf-8\"/>");
-		out.println("<link rel=\"stylesheet\" href=\"/css/bootstrap.min.css\">");
+		out.println("<link href=\"//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css\" rel=\"stylesheet\">");
 		out.println("</head><body> ");
 		out.println("<table class=\"table\">");
 		out.println("<tr><td>rank</td><td>ID</td><td>name                        </td><td>rating</td><td>listeners</td></tr>");
 		int max = Math.min(512, e.size());
 		for (int i=0; i<max; i++) {
 			Album a=e.get(i);
-			out.println("<tr><td>"+(i+1)+"</td><td>"+a.serial+"</td><td>"+a+"</td><td>"+scb.getRating(a)+"</td><td>"+GameRuntime.listeners.get(a)+"</td><tr>");
+			out.println("<tr><td>"+(i+1)+"</td><td>"+a.serial+"</td><td>"+a+"</td><td>"+scb.getRating(a)+"</td><td>"+GameRuntime.listeners.get(a)+"</td></tr>");
 		}
 		out.println("</table>");
 		long elapsed = System.currentTimeMillis() - start;

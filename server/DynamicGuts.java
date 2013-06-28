@@ -51,10 +51,6 @@ public class DynamicGuts {
 			String argString = path.substring(Math.min(handlerName.length()+1, path.length()));
 			mHdl.get(handlerName).handleRequest(argString, out);
 		}
-
-		//		if (pF.exists()) {
-		//			new FileHandler(path).handleRequest("", out);
-		//		}
 	}
 	public static void sendHeader(PrintStream out) throws IOException {
 		out.println("HTTP/1.1 ");

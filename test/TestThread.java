@@ -23,8 +23,9 @@ public class TestThread implements Runnable {
 				String link = page.substring(b,e);
 				baos.reset();
 				DynamicGuts.processRequest("POST", link, out);
+				Thread.sleep(100);
 			}
-		} catch (IOException e) {
+		} catch (Exception e) {
 			throw new Error(e);
 		}
 	}	

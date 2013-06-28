@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 import serial.ProfileReader;
 import serial.ProfileWriter;
@@ -24,6 +25,7 @@ import util.PageTemplate;
 public class Main {
 	//has to be global so we can stop it in doCommandLine()
 	static Thread serverThread;
+	static ArrayList<Thread> testThreads = new ArrayList<Thread>();
 	public static void main(String[] __args) {
 		//before we do anything else, make sure we are all set-up 
 		registerHandlers();
@@ -72,9 +74,15 @@ public class Main {
 			break;
 		case "test":
 			if (args.length > 1) {
-				new Thread(new TestThread(args[1])).start();
+				Thread t = new Thread(new TestThread(args[1]));
+				testThreads.add(t);
+				t.start();
 				System.out.println("OK, started testing thread for user "+args[1]);
 			} else System.out.println("test :: username -> IO ()");
+			break;
+		case "stop-test":
+			for (Thread t : testThreads)
+				t.stop();
 			break;
 		case "invoke-gc":
 			System.gc();
@@ -157,12 +165,12 @@ public class Main {
 			if (args.length > 1) {
 				try {
 					readProfiles("data/profiles", Boolean.parseBoolean(args[1]));
+					System.out.println("OK, read profiles");
 				} catch (Exception e) {
 					System.out.println("exception in read-profiles: "+e);
 					e.printStackTrace();
 				}
 			} else System.out.println("read-profiles :: Bool -> IO ()");
-			System.out.println("OK, read profiles");
 			break;
 		case "rebase":
 			GameRuntime.rebase();

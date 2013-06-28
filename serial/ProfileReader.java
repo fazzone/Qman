@@ -28,7 +28,9 @@ public class ProfileReader {
 		ArrayList<Album> banned = new ArrayList<Album>();
 		while (reader.ready()) {
 			String title = reader.readLine(), artist = reader.readLine(), imgurl = reader.readLine();
-			int rating = preserveRatings ? Integer.parseInt(reader.readLine()) : Scoreboard.DEFAULT_RATING;
+			int prevRating = Integer.parseInt(reader.readLine());
+			
+			int rating = preserveRatings ? prevRating : Scoreboard.DEFAULT_RATING;
 			if (i++ < N)
 				//Since we can now do a rebase, we no longer need to do this shit.
 				//(it remains in the reader, but ignored, for compatibility)
